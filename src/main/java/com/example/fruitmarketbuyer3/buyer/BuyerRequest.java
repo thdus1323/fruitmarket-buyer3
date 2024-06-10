@@ -11,10 +11,14 @@ public class BuyerRequest {
         private String buyerEmail;
 
         public Buyer toEntity(){
-            Buyer buyer = new Buyer();
-            buyer.setBuyerName(buyerName);
-            buyer.setBuyerPw(buyerPw);
-            buyer.setBuyerEmail(buyerEmail);
+            Buyer buyer = Buyer.builder()
+                    .buyerName(buyerName)
+                    .buyerPw(buyerPw)
+                    .buyerEmail(buyerEmail)
+                    .build();
+//            buyer.setBuyerName(buyerName);
+//            buyer.setBuyerPw(buyerPw);
+//            buyer.setBuyerEmail(buyerEmail);
             return buyer;
         }
     }
