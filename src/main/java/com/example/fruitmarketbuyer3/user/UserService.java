@@ -1,26 +1,24 @@
-package com.example.fruitmarketbuyer3.buyer;
+package com.example.fruitmarketbuyer3.user;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 @RequiredArgsConstructor
-public class BuyerService {
-    private final BuyerRespository buyerRespository;
+public class UserService {
+    private final UserRespository userRespository;
 
     //1. 회원가입
     @Transactional
-    public void join(BuyerRequest.JoinDTO reqDTO){
+    public void join(UserRequest.JoinDTO reqDTO){
 //        Buyer buyer = new Buyer();
 //        buyer.setBuyerName(reqDTO.getBuyerName());
 //        buyer.setBuyerPw(reqDTO.getBuyerPw());
 //        buyer.setBuyerEmail(reqDTO.getBuyerEmail());
 //        buyer.setCreatedAt(LocalDateTime.now());
 
-        buyerRespository.save(reqDTO.toEntity());
+        userRespository.save(reqDTO.toEntity());
     }
 
     //2. 로그인
@@ -29,8 +27,8 @@ public class BuyerService {
     // 3) session에 담는 것은 service의 책임이 아님.
     // 4) session 관련된 일은 controller의 책임이다.
     // 5) buyer객체를 return 해야 겠군.
-    public Buyer login(BuyerRequest.LoginDTO reqDTO){
-        Buyer sessionBuyer = buyerRespository.login(reqDTO);
-        return sessionBuyer;
+    public User login(UserRequest.LoginDTO reqDTO){
+        User sessionUser = userRespository.login(reqDTO);
+        return sessionUser;
     }
 }

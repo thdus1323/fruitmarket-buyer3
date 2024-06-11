@@ -1,7 +1,6 @@
-package com.example.fruitmarketbuyer3.buyer;
+package com.example.fruitmarketbuyer3.user;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,32 +9,34 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Data
-@Table(name = "buyer_tb")
+@Table(name = "user_tb")
 @NoArgsConstructor // SELECT할 때 SPRING이 NEW 해줌 (DEFAULT 생성자)
 @Entity
-public class Buyer {
+public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Integer buyerId;
+    private Integer userId;
 
     @Column(unique = true, nullable = false, length = 20)
-    private String buyerName;
+    private String userName;
 
     @Column(nullable = false)
-    private String buyerPw;
+    private String userPw;
 
     @Column(nullable = false)
-    private String buyerEmail;
+    private String userEmail;
+
+    // String role; // buyer, seller
 
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @Builder
-    public Buyer(Integer buyerId, String buyerName, String buyerPw, String buyerEmail, LocalDateTime createdAt) {
-        this.buyerId = buyerId;
-        this.buyerName = buyerName;
-        this.buyerPw = buyerPw;
-        this.buyerEmail = buyerEmail;
+    public User(Integer userId, String userName, String userPw, String userEmail, LocalDateTime createdAt) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPw = userPw;
+        this.userEmail = userEmail;
         this.createdAt = createdAt;
     }
 }
