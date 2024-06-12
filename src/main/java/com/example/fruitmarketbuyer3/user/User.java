@@ -26,17 +26,19 @@ public class User {
     @Column(nullable = false)
     private String userEmail;
 
-    // String role; // buyer, seller
+    @Column(nullable = false)
+    private String role; // buyer, seller
 
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @Builder
-    public User(Integer userId, String userName, String userPw, String userEmail, LocalDateTime createdAt) {
+    public User(Integer userId, String userName, String userPw, String userEmail, String role, LocalDateTime createdAt) {
         this.userId = userId;
         this.userName = userName;
         this.userPw = userPw;
         this.userEmail = userEmail;
+        this.role = role;
         this.createdAt = createdAt;
     }
 }

@@ -9,16 +9,16 @@ public class UserRequest {
         private String userName;
         private String userPw;
         private String userEmail;
+        private String role;
+
 
         public User toEntity(){
             User user = User.builder()
                     .userName(userName)
                     .userPw(userPw)
                     .userEmail(userEmail)
+                    .role(role)
                     .build();
-//            buyer.setBuyerName(buyerName);
-//            buyer.setBuyerPw(buyerPw);
-//            buyer.setBuyerEmail(buyerEmail);
             return user;
         }
     }
@@ -27,5 +27,6 @@ public class UserRequest {
     public static class LoginDTO{
         private String userName;
         private String userPw;
+        private String role;
     }
 }

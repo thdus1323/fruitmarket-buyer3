@@ -21,9 +21,10 @@ public class UserRespository {
 
     //2. 로그인
     public User login(UserRequest.LoginDTO reqDTO) {
-        Query query = em.createQuery("select b from User b where b.userName = :name AND b.userPw = :password", User.class);
+        Query query = em.createQuery("select b from User b where b.userName = :name AND b.userPw = :password AND b.role = :role", User.class);
         query.setParameter("name", reqDTO.getUserName());
         query.setParameter("password", reqDTO.getUserPw());
+        query.setParameter("role", reqDTO.getRole());
         return (User) query.getSingleResult();
     }
 

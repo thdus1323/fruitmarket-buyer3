@@ -33,6 +33,10 @@ public class UserController {
             throw new RuntimeException("email이 null일 수 없어요");
         }
 
+        if (reqDTO.getRole() == null || reqDTO.getRole().isEmpty()){
+            throw new RuntimeException("role를 선택해주세요");
+        }
+
         userService.join(reqDTO);
         return "redirect:/login-form";
     }
@@ -56,6 +60,10 @@ public class UserController {
 
         if (reqDTO.getUserPw() == null || reqDTO.getUserPw().isEmpty()){
             throw new RuntimeException("pw가 null일 수 없어요");
+        }
+
+        if (reqDTO.getRole() == null || reqDTO.getRole().isEmpty()){
+            throw new RuntimeException("role를 선택해주세요");
         }
 
         User sessionUser = userService.login(reqDTO);
