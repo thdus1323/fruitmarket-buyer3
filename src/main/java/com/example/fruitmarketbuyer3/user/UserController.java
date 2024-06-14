@@ -75,4 +75,9 @@ public class UserController {
     public String loginForm(){
         return "/user/login-form";
     }
+
+    @GetMapping("/logout")
+    public String logout(){
+        return "/user/login-form";
+    }
 }

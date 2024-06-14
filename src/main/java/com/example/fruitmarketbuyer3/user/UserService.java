@@ -18,6 +18,14 @@ public class UserService {
 //        buyer.setBuyerEmail(reqDTO.getBuyerEmail());
 //        buyer.setCreatedAt(LocalDateTime.now());
 
+        // TODO: username 못들어오게 중복 회원가입 안되게 막기
+
+        //db가져오고 그 값이랑 reqdto랑 비교해서 있는 있으면 throw로 중복네임이라고하라!
+
+//        String reqUsername = reqDTO.getUserName();
+//
+//        User presentUser = userRespository.login(reqUsername).orElse(null);
+//        if(presentUser != null){throw new RuntimeException()"이름 중복이여요"}
         userRespository.save(reqDTO.toEntity());
     }
 
