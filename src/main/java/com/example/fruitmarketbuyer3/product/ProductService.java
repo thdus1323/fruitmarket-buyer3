@@ -18,4 +18,10 @@ public class ProductService {
                 .toList();
     }
 
+    //상품상세보기
+    public ProductResponse.DetailDTO getProductDetail(Integer productId){
+        Product product = productRepository.findById(productId);
+        return new ProductResponse.DetailDTO(product);
+    }
+
 }
